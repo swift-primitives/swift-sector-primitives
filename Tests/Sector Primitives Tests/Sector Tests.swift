@@ -1,8 +1,7 @@
 // Sector Tests.swift
 
-import Testing
-
 import Sector_Primitives
+import Testing
 
 // MARK: - Sector.Quadrant
 
