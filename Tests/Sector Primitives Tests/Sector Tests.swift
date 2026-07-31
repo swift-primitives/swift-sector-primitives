@@ -5,8 +5,15 @@ import Testing
 
 // MARK: - Sector.Quadrant
 
-@Suite
-struct `Sector.Quadrant` {
+extension Sector.Quadrant {
+    @Suite struct Test {
+        @Suite struct Unit {}
+        @Suite struct `Edge Case` {}
+        @Suite struct Integration {}
+    }
+}
+
+extension Sector.Quadrant.Test.Unit {
     @Test
     func `opposite is the diagonal`() {
         #expect(Sector.Quadrant.I.opposite == .III)
@@ -25,8 +32,15 @@ struct `Sector.Quadrant` {
 
 // MARK: - Sector.Octant
 
-@Suite
-struct `Sector.Octant` {
+extension Sector.Octant {
+    @Suite struct Test {
+        @Suite struct Unit {}
+        @Suite struct `Edge Case` {}
+        @Suite struct Integration {}
+    }
+}
+
+extension Sector.Octant.Test.Unit {
     @Test
     func `opposite flips all three signs`() {
         #expect(Sector.Octant.ppp.opposite == .nnn)
