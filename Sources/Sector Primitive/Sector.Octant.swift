@@ -66,19 +66,29 @@ extension Sector.Octant {
     }
 
     /// Equality of two octants by their sign-triple rank.
-    @inlinable public static func == (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool { lhs._rank == rhs._rank }
+    @inlinable public static func == (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool {
+        lhs._rank == rhs._rank
+    }
 
     /// True when the left octant precedes the right in sign-triple rank.
-    @inlinable public static func < (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool { lhs._rank < rhs._rank }
+    @inlinable public static func < (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool {
+        lhs._rank < rhs._rank
+    }
 
     /// True when the left octant does not follow the right in sign-triple rank.
-    @inlinable public static func <= (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool { lhs._rank <= rhs._rank }
+    @inlinable public static func <= (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool {
+        lhs._rank <= rhs._rank
+    }
 
     /// True when the left octant follows the right in sign-triple rank.
-    @inlinable public static func > (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool { lhs._rank > rhs._rank }
+    @inlinable public static func > (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool {
+        lhs._rank > rhs._rank
+    }
 
     /// True when the left octant does not precede the right in sign-triple rank.
-    @inlinable public static func >= (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool { lhs._rank >= rhs._rank }
+    @inlinable public static func >= (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool {
+        lhs._rank >= rhs._rank
+    }
 
     /// Hashes the octant by its sign-triple rank.
     @inlinable public func hash(into hasher: inout Hasher) { hasher.combine(_rank) }
