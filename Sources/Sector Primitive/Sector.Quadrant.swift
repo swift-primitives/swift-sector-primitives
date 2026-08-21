@@ -1,34 +1,19 @@
-// Sector.Quadrant.swift
-// The four quadrants of the plane.
-
 extension Sector {
-    /// The four quadrants of the plane, over the `Orthant<2>` and `Cyclic.Group.Static<4>`
-    /// carriers, in standard mathematical numbering (counter-clockwise from the `(+x, +y)`
-    /// quadrant).
-    ///
-    /// A plane quadrant — deliberately distinct from `Boundary.Corner`, which shares the
-    /// `Orthant<2>` carrier but means a box vertex. The lossless `.orthant` / `.cyclic`
-    /// projections live in `swift-sector-orthant-primitives` / `swift-sector-cyclic-primitives`.
+
     public enum Quadrant: Sendable, CaseIterable {
-        // swift-format-ignore: AlwaysUseLowerCamelCase
-        /// Quadrant I: `(+x, +y)`.
+
         case I
-        // swift-format-ignore: AlwaysUseLowerCamelCase
-        /// Quadrant II: `(−x, +y)`.
+
         case II
-        // swift-format-ignore: AlwaysUseLowerCamelCase
-        /// Quadrant III: `(−x, −y)`.
+
         case III
-        // swift-format-ignore: AlwaysUseLowerCamelCase
-        /// Quadrant IV: `(+x, −y)`.
+
         case IV
     }
 }
 
-// MARK: - Semantics
-
 extension Sector.Quadrant {
-    /// The diagonally-opposite quadrant (I ↔ III, II ↔ IV).
+
     @inlinable
     public var opposite: Sector.Quadrant {
         switch self {
@@ -39,8 +24,6 @@ extension Sector.Quadrant {
         }
     }
 }
-
-// MARK: - Equality, Hashing, Ordering
 
 extension Sector.Quadrant {
     @usableFromInline
@@ -53,36 +36,28 @@ extension Sector.Quadrant {
         }
     }
 
-    /// Equality of two quadrants by their quadrant number.
     @inlinable public static func == (lhs: Sector.Quadrant, rhs: Sector.Quadrant) -> Bool {
         lhs._rank == rhs._rank
     }
 
-    /// True when the left quadrant precedes the right in quadrant number.
     @inlinable public static func < (lhs: Sector.Quadrant, rhs: Sector.Quadrant) -> Bool {
         lhs._rank < rhs._rank
     }
 
-    /// True when the left quadrant does not follow the right in quadrant number.
     @inlinable public static func <= (lhs: Sector.Quadrant, rhs: Sector.Quadrant) -> Bool {
         lhs._rank <= rhs._rank
     }
 
-    /// True when the left quadrant follows the right in quadrant number.
     @inlinable public static func > (lhs: Sector.Quadrant, rhs: Sector.Quadrant) -> Bool {
         lhs._rank > rhs._rank
     }
 
-    /// True when the left quadrant does not precede the right in quadrant number.
     @inlinable public static func >= (lhs: Sector.Quadrant, rhs: Sector.Quadrant) -> Bool {
         lhs._rank >= rhs._rank
     }
 
-    /// Hashes the quadrant by its quadrant number.
     @inlinable public func hash(into hasher: inout Hasher) { hasher.combine(_rank) }
 }
-
-// MARK: - Codable
 
 #if !hasFeature(Embedded)
     extension Sector.Quadrant: Codable {}

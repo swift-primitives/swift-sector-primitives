@@ -1,38 +1,27 @@
-// Sector.Octant.swift
-// The eight octants of 3-space.
-
 extension Sector {
-    /// The eight octants of 3-space, over the `Orthant<3>` carrier.
-    ///
-    /// Each case is the sign triple `(x, y, z)` where `p` = positive and `n` = negative — so
-    /// `.ppp` is `(+, +, +)` and `.nnn` is `(−, −, −)`.
-    ///
-    /// The `.orthant` projection (x/y/z binary-axis decomposition via `Orthant<3>`) lives in
-    /// `swift-sector-orthant-primitives`.
+
     public enum Octant: Sendable, CaseIterable {
-        /// `(+, +, +)`.
+
         case ppp
-        /// `(+, +, −)`.
+
         case ppn
-        /// `(+, −, +)`.
+
         case pnp
-        /// `(+, −, −)`.
+
         case pnn
-        /// `(−, +, +)`.
+
         case npp
-        /// `(−, +, −)`.
+
         case npn
-        /// `(−, −, +)`.
+
         case nnp
-        /// `(−, −, −)`.
+
         case nnn
     }
 }
 
-// MARK: - Semantics
-
 extension Sector.Octant {
-    /// The antipodal octant — all three signs flipped.
+
     @inlinable
     public var opposite: Sector.Octant {
         switch self {
@@ -47,8 +36,6 @@ extension Sector.Octant {
         }
     }
 }
-
-// MARK: - Equality, Hashing, Ordering
 
 extension Sector.Octant {
     @usableFromInline
@@ -65,36 +52,28 @@ extension Sector.Octant {
         }
     }
 
-    /// Equality of two octants by their sign-triple rank.
     @inlinable public static func == (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool {
         lhs._rank == rhs._rank
     }
 
-    /// True when the left octant precedes the right in sign-triple rank.
     @inlinable public static func < (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool {
         lhs._rank < rhs._rank
     }
 
-    /// True when the left octant does not follow the right in sign-triple rank.
     @inlinable public static func <= (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool {
         lhs._rank <= rhs._rank
     }
 
-    /// True when the left octant follows the right in sign-triple rank.
     @inlinable public static func > (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool {
         lhs._rank > rhs._rank
     }
 
-    /// True when the left octant does not precede the right in sign-triple rank.
     @inlinable public static func >= (lhs: Sector.Octant, rhs: Sector.Octant) -> Bool {
         lhs._rank >= rhs._rank
     }
 
-    /// Hashes the octant by its sign-triple rank.
     @inlinable public func hash(into hasher: inout Hasher) { hasher.combine(_rank) }
 }
-
-// MARK: - Codable
 
 #if !hasFeature(Embedded)
     extension Sector.Octant: Codable {}

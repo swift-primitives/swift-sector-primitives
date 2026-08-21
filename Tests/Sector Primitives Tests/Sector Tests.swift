@@ -1,9 +1,5 @@
-// Sector Tests.swift
-
 import Sector_Primitives
 import Testing
-
-// MARK: - Sector.Quadrant
 
 extension Sector.Quadrant {
     @Suite struct Test {
@@ -29,8 +25,6 @@ extension Sector.Quadrant.Test.Unit {
         #expect(set.count == 4)
     }
 }
-
-// MARK: - Sector.Octant
 
 extension Sector.Octant {
     @Suite struct Test {
